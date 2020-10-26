@@ -65,5 +65,5 @@ on film.film_id = film_category.film_id
 Inner Join category
 on category.category_id = film_category.category_id
 Group by film_category.category_id
-Having avg(replacement_cost) - avg(rental_rate) > 17;
+Having avg(replacement_cost) - avg(rental_rate) > 17
 
