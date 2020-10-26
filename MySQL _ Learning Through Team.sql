@@ -1,3 +1,5 @@
+-- TESTING TO SEE IF THERE IS A CHANGE IN THE SQL CODE FOR GITHUB
+
 -- Go to Sakila Schema in your MySQL Workbench.
 -- With your group (that you were put in today's class), discuss the following 7 questions and solutions. 
 -- Let's say your group has student called A, B, and C.
