@@ -16,8 +16,6 @@
 -- Thus, it's important to make sure that each student in a group is teaching other students as well so that everyone in that group is getting highest possible score.
 -- See below for the questions and their answers.
 
--- one last test
-
 -- hello jason		
 
 Use sakila;
