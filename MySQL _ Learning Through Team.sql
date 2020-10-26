@@ -1,7 +1,7 @@
 -- TESTING TO SEE IF THERE IS A CHANGE IN THE SQL CODE FOR GITHUB
 -- TESTING 1 2 3
 -- Testing again 
-
+-- Testing one more time
 -- Testing Branch merge
 -- Go to Sakila Schema in your MySQL Workbench.
 -- With your group (that you were put in today's class), discuss the following 7 questions and solutions. 
