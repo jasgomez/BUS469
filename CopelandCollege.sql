@@ -4,6 +4,7 @@ use CopelandCollege;
 
 -- More information in the tables might need to be added or removed but unsure.
 -- Would need to fill in the information for each table. The info can be dummy data.
+-- Need to create class table to link students with the courses they register for
 
 -- Parking table created.
 create table parking (
@@ -12,11 +13,15 @@ parkingID int(5) primary key not null
 
 -- Faculty table created.
 create table faculty (
-facultyID int(5) primary key not null,
+facultyID varchar(5) primary key not null,
 first_name varchar(25) not null,
 last_name varchar(25) not null,
 phonenum varchar(25) not null
 );
+
+-- Add deptID to faculty
+alter table faculty
+add column deptID varchar(1);
 
 -- Department table created.
 create table department (
@@ -34,15 +39,22 @@ add Location varchar(25) not null; -- Added to department
 
 -- Student table created. 
 create table student (
-studentID int(8) primary key not null,
+studentID varchar(10) primary key not null,
 first_name varchar(25) not null,
 last_name varchar(25) not null,
-phonenum varchar(10) not null,
-courseID varchar(10) not null, 
-parkingID int(5),
-deptID varchar(10) not null,
-deptID varchar(10)
+phonenum varchar(15) not null,
+courseID varchar(10), -- Dropped 
+parkingID int(5), -- Dropped
+deptID varchar(1) not null,
+bookID varchar(10) -- Dropped
 );
+
+-- Drop courseID, parkingID, and bookID from students in favor of creating new tables for normalization
+alter table student
+
+drop column courseID,
+drop column parkingID,
+drop column bookID;
 
 -- Course table created.
 create table course (
@@ -75,7 +87,7 @@ studentID int(8)
 
 -- Adds departments id's, name, and location.
 insert into department
-values (deptID, name, location),
+values  -- (deptID, name, location)
 ("1", "Art", "100"),
 ("2", "Business", "200"),
 ("3", "Health Sciences", "300"),
@@ -85,8 +97,9 @@ values (deptID, name, location),
 ("7", "Science", "700"),
 ("8", "Technology", "800");
 
+-- add couress
 insert into course
-values (courseID, courseName, semester, classrmID, deptID),
+values  -- (courseID, courseName, semester, classrmID, deptID)
 -- Art courses
 ("ART 1A", "Drawing I", "Fall2020", "101", "1"),
 ("ART 1B", "Drawing II", "Fall2020", "101", "1"),
@@ -117,8 +130,40 @@ values (courseID, courseName, semester, classrmID, deptID),
 ("HS 10", "Environmental Health", "Fall2020", "306", "3");
 -- Math Courses
 
-insert into student
-values (studentID, first_name, last_name, phonenum, courseID, parkingID, deptID, deptID)
--- Values will need to be added.
-;
+-- Add students
+insert into student (studentID, first_name, last_name, phonenum, deptID)
+values 
+("59743685", "John", "Adams", "5497854268", "5"),
+("84563597", "Hector", "Sanchez", "5497862159", "2"),
+("64521975", "Elizabeth", "Miller", "7584523684", "6"),
+("25852072", "William", "Brown", "8783930631", "3"),
+("56279486", "Sam", "Kind", "1823926268", "1"),
+("31994947", "Emma", "Reed", "9184506939", "8"),
+("25796555", "Aron", "Powell", "9177878161", "7"),
+("93383663", "Oliver", "Baker", "9538308252", "2"),
+("29293935", "Isabella", "Lopez", "3438127019", "1"),
+("64773499", "Mia", "Davis", "9762084827", "4"),
+("78237958", "James", "Moore", "5492950350", "8"),
+("04172019", "Ava", "White", "8343505433", "3"),
+("34734082", "Bruce", "Lee", "2823631050", "7"),
+("82581125", "Javier", "Martinez", "6358784101", "1"),
+("16823392", "Benjamin", "Thomas", "3319324623", "2"),
+("86140702", "Evelyn", "Thomas", "4682721444", "5"),
+("50299271", "Sophia", "Ramirez", "2306662555", "6"),
+("90370071", "Lucas", "Walker", "4430575573", "3"),
+("57139453", "Emily", "Clark", "5851168223", "5"),
+("97882509", "Liam", "Young", "4668930675", "7"),
+("40507528", "Scarlett", "Flores", "9615188214", "4"),
+("56172064", "Riley", "Turner", "9604676151", "1");
 
+-- Add faculty
+insert into faculty
+values
+("91153", "Grace", "Diaz", "6875079089", "2"),
+("25744", "Lucy", "Cruz", "6373991895", "1"),
+("72492", "Alex", "Cooper", "4187692455", "3"),
+("75757", "Leo", "Watson", "2400765025", "4"),
+("34067", "Alice", "Alvarez", "4526670406", "5"),
+("62433", "Roman", "Gray", "7026479974", "7"),
+("35992", "Jose", "Castillo", "2706017154", "6"),
+("16805", "Luis", "Foster", "3667574244", "8");
